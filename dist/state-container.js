@@ -21,29 +21,8 @@ function _defineProperty(obj, key, value) {
 
 var defineProperty = _defineProperty;
 
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
-var objectSpread = _objectSpread;
-
 function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x.default : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 function createCommonjsModule(fn, module) {
@@ -910,7 +889,7 @@ var _arrayIncludes = function (IS_INCLUDES) {
 };
 
 var _core = createCommonjsModule(function (module) {
-var core = module.exports = { version: '2.5.7' };
+var core = module.exports = { version: '2.6.9' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 });
 var _core_1 = _core.version;
@@ -935,7 +914,7 @@ var store = _global[SHARED] || (_global[SHARED] = {});
 })('versions', []).push({
   version: _core.version,
   mode: _library ? 'pure' : 'global',
-  copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
 });
 
@@ -1476,6 +1455,8 @@ var META = _meta.KEY;
 
 
 
+
+
 var gOPD$1 = _objectGopd.f;
 var dP$1 = _objectDp.f;
 var gOPN$1 = _objectGopnExt.f;
@@ -1490,7 +1471,7 @@ var SymbolRegistry = _shared('symbol-registry');
 var AllSymbols = _shared('symbols');
 var OPSymbols = _shared('op-symbols');
 var ObjectProto = Object[PROTOTYPE$2];
-var USE_NATIVE = typeof $Symbol == 'function';
+var USE_NATIVE = typeof $Symbol == 'function' && !!_objectGops.f;
 var QObject = _global.QObject;
 // Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
 var setter = !QObject || !QObject[PROTOTYPE$2] || !QObject[PROTOTYPE$2].findChild;
@@ -1651,6 +1632,16 @@ _export(_export.S + _export.F * !USE_NATIVE, 'Object', {
   getOwnPropertySymbols: $getOwnPropertySymbols
 });
 
+// Chrome 38 and 39 `Object.getOwnPropertySymbols` fails on primitives
+// https://bugs.chromium.org/p/v8/issues/detail?id=3443
+var FAILS_ON_PRIMITIVES = _fails(function () { _objectGops.f(1); });
+
+_export(_export.S + _export.F * FAILS_ON_PRIMITIVES, 'Object', {
+  getOwnPropertySymbols: function getOwnPropertySymbols(it) {
+    return _objectGops.f(_toObject(it));
+  }
+});
+
 // 24.3.2 JSON.stringify(value [, replacer [, space]])
 $JSON && _export(_export.S + _export.F * (!USE_NATIVE || _fails(function () {
   var S = $Symbol();
@@ -1688,7 +1679,7 @@ var getOwnPropertySymbols = _core.Object.getOwnPropertySymbols;
 
 var getOwnPropertySymbols$1 = getOwnPropertySymbols;
 
-function _objectSpread$1(target) {
+function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
 
@@ -1708,7 +1699,7 @@ function _objectSpread$1(target) {
   return target;
 }
 
-var objectSpread$1 = _objectSpread$1;
+var objectSpread = _objectSpread;
 
 var lib = createCommonjsModule(function (module, exports) {
 
@@ -1725,7 +1716,7 @@ var _keys = interopRequireDefault(keys$1);
 
 var _defineProperty2 = interopRequireDefault(defineProperty$3);
 
-var _objectSpread6 = interopRequireDefault(objectSpread$1);
+var _objectSpread6 = interopRequireDefault(objectSpread);
 
 var SHOW = '@@DVA_LOADING/SHOW';
 var HIDE = '@@DVA_LOADING/HIDE';
@@ -1857,6 +1848,10 @@ exports.default = _default;
 
 var createLoading = unwrapExports(lib);
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 var cached = {};
 var stateContainer = null;
 
@@ -1886,7 +1881,7 @@ function createStateContainer(_ref) {
       app._history = history;
     }
   };
-  stateContainer = dvaCore.create(objectSpread({
+  stateContainer = dvaCore.create(_objectSpread$1({
     onError: onError
   }, createLoading()), createOpts);
   /**
