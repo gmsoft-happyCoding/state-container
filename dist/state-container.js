@@ -4,23 +4,6 @@ typeof define === 'function' && define.amd ? define(['exports', 'dva-core', 'red
 (factory((global.StateContainer = {}),global.DvaCore,global.Redux,global.ReactRouterRedux));
 }(this, (function (exports,dvaCore,redux,reactRouterRedux) { 'use strict';
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-var defineProperty = _defineProperty;
-
 function unwrapExports (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
@@ -1152,15 +1135,15 @@ var keys$1 = keys;
 _export(_export.S + _export.F * !_descriptors, 'Object', { defineProperty: _objectDp.f });
 
 var $Object = _core.Object;
-var defineProperty$1 = function defineProperty(it, key, desc) {
+var defineProperty = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
-var defineProperty$2 = defineProperty$1;
+var defineProperty$1 = defineProperty;
 
-function _defineProperty$1(obj, key, value) {
+function _defineProperty(obj, key, value) {
   if (key in obj) {
-    defineProperty$2(obj, key, {
+    defineProperty$1(obj, key, {
       value: value,
       enumerable: true,
       configurable: true,
@@ -1173,7 +1156,7 @@ function _defineProperty$1(obj, key, value) {
   return obj;
 }
 
-var defineProperty$3 = _defineProperty$1;
+var defineProperty$2 = _defineProperty;
 
 var f$1 = {}.propertyIsEnumerable;
 
@@ -1304,10 +1287,10 @@ var _wksExt = {
 	f: f$3
 };
 
-var defineProperty$4 = _objectDp.f;
+var defineProperty$3 = _objectDp.f;
 var _wksDefine = function (name) {
   var $Symbol = _core.Symbol || (_core.Symbol = _library ? {} : _global.Symbol || {});
-  if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty$4($Symbol, name, { value: _wksExt.f(name) });
+  if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty$3($Symbol, name, { value: _wksExt.f(name) });
 };
 
 var f$4 = Object.getOwnPropertySymbols;
@@ -1692,7 +1675,7 @@ function _objectSpread(target) {
     }
 
     ownKeys.forEach(function (key) {
-      defineProperty$3(target, key, source[key]);
+      defineProperty$2(target, key, source[key]);
     });
   }
 
@@ -1714,7 +1697,7 @@ var _regenerator = interopRequireDefault(regenerator);
 
 var _keys = interopRequireDefault(keys$1);
 
-var _defineProperty2 = interopRequireDefault(defineProperty$3);
+var _defineProperty2 = interopRequireDefault(defineProperty$2);
 
 var _objectSpread6 = interopRequireDefault(objectSpread);
 
@@ -1848,9 +1831,66 @@ exports.default = _default;
 
 var createLoading = unwrapExports(lib);
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+function _defineProperty$1(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  return obj;
+}
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var SET = '@@DVA_THEME/SET';
+var NAMESPACE = 'theme';
+
+function createThemePlugin() {
+  var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var namespace = opts.namespace || NAMESPACE;
+  var initialState = {
+    rowProps: {
+      gutter: 24
+    },
+    colProps: {
+      xl: 6,
+      lg: 6,
+      md: 8,
+      sm: 12,
+      xs: 24
+    }
+  };
+
+  var extraReducers = _defineProperty$1({}, namespace, function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+
+    var _ref = arguments.length > 1 ? arguments[1] : undefined,
+        type = _ref.type,
+        payload = _ref.payload;
+
+    switch (type) {
+      case SET:
+        return _objectSpread$1(_objectSpread$1({}, state), payload);
+
+      default:
+        return state;
+    }
+  });
+
+  return {
+    extraReducers: extraReducers
+  };
+}
+
+/*eslint-disable*/
 
 var cached = {};
 var stateContainer = null;
@@ -1881,9 +1921,11 @@ function createStateContainer(_ref) {
       app._history = history;
     }
   };
-  stateContainer = dvaCore.create(_objectSpread$1({
+  stateContainer = dvaCore.create({
     onError: onError
-  }, createLoading()), createOpts);
+  }, createOpts);
+  stateContainer.use(createLoading());
+  stateContainer.use(createThemePlugin());
   /**
    * dynamic inject dva model to stateContainer
    * @param {Object} model dva model

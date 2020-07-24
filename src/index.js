@@ -3,12 +3,13 @@ import { create } from "dva-core";
 import { applyMiddleware } from "redux";
 import { routerMiddleware, routerReducer as routing } from "react-router-redux";
 import createLoading from "dva-loading";
+import createThemePlugin from "@gmsoft/dva-theme-plugin";
 
 // model namespace cache
 const cached = {};
 let stateContainer = null;
 
-const defaultOnError = err => console.error(err);
+const defaultOnError = (err) => console.error(err);
 
 function createStateContainer({ history, NODE_ENV, onError = defaultOnError }) {
   if (stateContainer) return stateContainer;
@@ -19,17 +20,20 @@ function createStateContainer({ history, NODE_ENV, onError = defaultOnError }) {
    */
   const createOpts = {
     initialReducer: {
-      routing
+      routing,
     },
     setupMiddlewares(middlewares) {
       return [routerMiddleware(history), ...middlewares];
     },
     setupApp(app) {
       app._history = history;
-    }
+    },
   };
 
-  stateContainer = create({ onError, ...createLoading() }, createOpts);
+  stateContainer = create({ onError }, createOpts);
+
+  stateContainer.use(createLoading());
+  stateContainer.use(createThemePlugin());
 
   /**
    * dynamic inject dva model to stateContainer
