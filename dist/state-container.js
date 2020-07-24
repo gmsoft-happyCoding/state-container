@@ -872,7 +872,7 @@ var _arrayIncludes = function (IS_INCLUDES) {
 };
 
 var _core = createCommonjsModule(function (module) {
-var core = module.exports = { version: '2.6.9' };
+var core = module.exports = { version: '2.6.11' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 });
 var _core_1 = _core.version;
@@ -1846,15 +1846,22 @@ function _defineProperty$1(obj, key, value) {
   return obj;
 }
 
+var defineProperty$4 = _defineProperty$1;
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { defineProperty$4(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var SET = '@@DVA_THEME/SET';
 var NAMESPACE = 'theme';
 
-function createThemePlugin() {
-  var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+function createThemePlugin(opts) {
+  var _extraReducers;
+
+  if (opts === void 0) {
+    opts = {};
+  }
+
   var namespace = opts.namespace || NAMESPACE;
   var initialState = {
     rowProps: {
@@ -1868,12 +1875,12 @@ function createThemePlugin() {
       xs: 24
     }
   };
+  var extraReducers = (_extraReducers = {}, _extraReducers[namespace] = function (state, _ref) {
+    if (state === void 0) {
+      state = initialState;
+    }
 
-  var extraReducers = _defineProperty$1({}, namespace, function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-
-    var _ref = arguments.length > 1 ? arguments[1] : undefined,
-        type = _ref.type,
+    var type = _ref.type,
         payload = _ref.payload;
 
     switch (type) {
@@ -1883,8 +1890,7 @@ function createThemePlugin() {
       default:
         return state;
     }
-  });
-
+  }, _extraReducers);
   return {
     extraReducers: extraReducers
   };
