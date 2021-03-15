@@ -10,7 +10,8 @@ const globals = {
   "dva-core": "DvaCore",
   "react-router-redux": "ReactRouterRedux",
   "connected-react-router": "ConnectedReactRouter",
-  history: "History"
+  history: "History",
+  "@gmsoft/event-bus": "EventBus",
 };
 
 export default [
@@ -23,24 +24,24 @@ export default [
       name: "StateContainer",
       indent: false,
       sourcemap: true,
-      globals
+      globals,
     },
     external: Object.getOwnPropertyNames(globals),
     plugins: [
       nodeResolve({
         jsnext: true,
-        main: true
+        main: true,
       }),
       commonjs(),
       babel({
         runtimeHelpers: true,
-        exclude: "node_modules/**"
+        exclude: "node_modules/**",
       }),
       replace({
-        "process.env.NODE_ENV": JSON.stringify("development")
+        "process.env.NODE_ENV": JSON.stringify("development"),
       }),
-      filesize()
-    ]
+      filesize(),
+    ],
   },
 
   // UMD Production
@@ -52,31 +53,31 @@ export default [
       name: "StateContainer",
       indent: false,
       sourcemap: true,
-      globals
+      globals,
     },
     external: Object.getOwnPropertyNames(globals),
     plugins: [
       nodeResolve({
         jsnext: true,
-        main: true
+        main: true,
       }),
       commonjs(),
       babel({
         exclude: "node_modules/**",
-        runtimeHelpers: true
+        runtimeHelpers: true,
       }),
       replace({
-        "process.env.NODE_ENV": JSON.stringify("production")
+        "process.env.NODE_ENV": JSON.stringify("production"),
       }),
       terser({
         compress: {
           pure_getters: true,
           unsafe: true,
           unsafe_comps: true,
-          warnings: false
-        }
+          warnings: false,
+        },
       }),
-      filesize()
-    ]
-  }
+      filesize(),
+    ],
+  },
 ];

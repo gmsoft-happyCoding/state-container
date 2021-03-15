@@ -1,8 +1,10 @@
 (function (global, factory) {
-typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('dva-core'), require('redux'), require('react-router-redux')) :
-typeof define === 'function' && define.amd ? define(['exports', 'dva-core', 'redux', 'react-router-redux'], factory) :
-(factory((global.StateContainer = {}),global.DvaCore,global.Redux,global.ReactRouterRedux));
-}(this, (function (exports,dvaCore,redux,reactRouterRedux) { 'use strict';
+typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@gmsoft/event-bus'), require('dva-core'), require('redux'), require('react-router-redux')) :
+typeof define === 'function' && define.amd ? define(['exports', '@gmsoft/event-bus', 'dva-core', 'redux', 'react-router-redux'], factory) :
+(factory((global.StateContainer = {}),global.EventBus,global.DvaCore,global.Redux,global.ReactRouterRedux));
+}(this, (function (exports,createOrFindInTop,dvaCore,redux,reactRouterRedux) { 'use strict';
+
+createOrFindInTop = createOrFindInTop && createOrFindInTop.hasOwnProperty('default') ? createOrFindInTop['default'] : createOrFindInTop;
 
 function unwrapExports (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -1831,7 +1833,16 @@ exports.default = _default;
 
 var createLoading = unwrapExports(lib);
 
-function _defineProperty$1(obj, key, value) {
+function unwrapExports$1 (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+function createCommonjsModule$1(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var defineProperty$4 = createCommonjsModule$1(function (module) {
+function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -1846,14 +1857,19 @@ function _defineProperty$1(obj, key, value) {
   return obj;
 }
 
-var defineProperty$4 = _defineProperty$1;
+module.exports = _defineProperty;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+var _defineProperty$1 = unwrapExports$1(defineProperty$4);
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { defineProperty$4(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-var SET = '@@DVA_THEME/SET';
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var SET = '@@THEME/SET';
 var NAMESPACE = 'theme';
+var storeKey = "__@" + NAMESPACE + "@__";
+var changeKey = "__@" + NAMESPACE + "Change@__";
 
 function createThemePlugin(opts) {
   var _extraReducers;
@@ -1863,6 +1879,7 @@ function createThemePlugin(opts) {
   }
 
   var namespace = opts.namespace || NAMESPACE;
+  var eventBus = createOrFindInTop();
   var initialState = {
     rowProps: {
       gutter: 24
@@ -1875,6 +1892,20 @@ function createThemePlugin(opts) {
       xs: 24
     }
   };
+  /**
+   * 子应用和宿主环境保持相同的 state
+   * 尝试使用顶层窗口的主题变量初始化
+   */
+
+  try {
+    if (top !== self) {
+      initialState = top[storeKey];
+    } else {
+      top[storeKey] = initialState;
+    }
+  } catch (e) {// do nothing
+  }
+
   var extraReducers = (_extraReducers = {}, _extraReducers[namespace] = function (state, _ref) {
     if (state === void 0) {
       state = initialState;
@@ -1891,9 +1922,59 @@ function createThemePlugin(opts) {
         return state;
     }
   }, _extraReducers);
-  return {
-    extraReducers: extraReducers
-  };
+
+  try {
+    /**
+     * 在宿主环境
+     * 1. 保存 state 到 window[storeKey]
+     * 2. 发送事件通知子应用主题改变了
+     */
+    if (top === self) {
+      var onAction = function onAction() {
+        return function (next) {
+          return function (action) {
+            if (action.type === SET) {
+              top[storeKey] = action.payload;
+              eventBus.emit(changeKey, action.payload);
+            }
+
+            next(action);
+          };
+        };
+      };
+
+      return {
+        onAction: onAction,
+        extraReducers: extraReducers
+      };
+      /**
+       * 在子应用中
+       * 接受应用主题改变事件通知, 修改 state
+       */
+    } else {
+      var themeEnhancer = function themeEnhancer(storeCreator) {
+        return function (reducer, preloadedState, enhancer) {
+          var store = storeCreator(reducer, preloadedState, enhancer);
+          eventBus.on(changeKey, function (payload) {
+            store.dispatch({
+              type: SET,
+              payload: payload
+            });
+          });
+          return store;
+        };
+      };
+
+      return {
+        extraReducers: extraReducers,
+        extraEnhancers: [themeEnhancer]
+      };
+    }
+  } catch (e) {
+    return {
+      extraReducers: extraReducers
+    };
+  }
 }
 
 /*eslint-disable*/
