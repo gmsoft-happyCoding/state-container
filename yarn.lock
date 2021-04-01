@@ -852,10 +852,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@gmsoft/dva-theme-plugin@1.1.2":
-  version "1.1.2"
-  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-theme-plugin/-/dva-theme-plugin-1.1.2.tgz#38db84d04b45747a7cefbf7a6e4ead4fbf35cd20"
-  integrity sha512-UEPYjelgBBwHanaTsZxD7ZmhrEzRahtFznhlPvo5OEMeJ7TPyH6M1Ohc+5i2cjzm2YlRV6zVIGGj3lFXaeWi5w==
+"@gmsoft/dva-theme-plugin@1.1.3":
+  version "1.1.3"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-theme-plugin/-/dva-theme-plugin-1.1.3.tgz#8797dfd78b519c6c5095f70aeb5ec72d129f1cfe"
+  integrity sha512-j4Hfg1eU6fmPKhu7ssJSuwi7keH4gWp4NXSkCyiXx76S03JkQ7aOTgv3DnCKzWVnXOj/RsKU8TruObTII9PKCw==
 
 "@types/estree@0.0.39":
   version "0.0.39"

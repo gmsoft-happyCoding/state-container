@@ -4,7 +4,7 @@
   "main": "dist/state-container.js",
   "license": "MIT",
   "dependencies": {
-    "@gmsoft/dva-theme-plugin": "1.1.2",
+    "@gmsoft/dva-theme-plugin": "1.1.3",
     "dva-core": "^2.0.1",
     "dva-loading": "^2.0.6",
     "react-router-redux": "4.0.8"

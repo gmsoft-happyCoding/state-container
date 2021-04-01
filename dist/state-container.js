@@ -1899,7 +1899,7 @@ function createThemePlugin(opts) {
 
   try {
     if (top !== self) {
-      initialState = top[storeKey];
+      if (top[storeKey]) initialState = top[storeKey];
     } else {
       top[storeKey] = initialState;
     }
