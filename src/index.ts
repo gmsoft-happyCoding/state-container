@@ -34,7 +34,7 @@ function createStateContainer(
     NODE_ENV: 'production',
   }
 ) {
-  if (stateContainer) return stateContainer;
+  if (stateContainer) return stateContainer as StateContainer;
 
   /**
    * initialReducer, redux-middleware, dva-plugin etc. in this configuration
@@ -80,7 +80,7 @@ function createStateContainer(
 
   stateContainer.start();
 
-  return stateContainer;
+  return stateContainer as StateContainer;
 }
 
 export { createStateContainer as create };
