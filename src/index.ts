@@ -30,21 +30,14 @@ interface ArgsI {
   globalContextOpts?: OptsI;
 }
 
-function createStateContainer(
-  {
-    history,
-    NODE_ENV,
-    onError,
-    useThemePlugin,
-    useGlobalContextPlugin,
-    globalContextOpts,
-  }: ArgsI = {
-    onError: defaultOnError,
-    NODE_ENV: 'production',
-    useThemePlugin: true,
-    useGlobalContextPlugin: false,
-  }
-) {
+function createStateContainer({
+  history,
+  NODE_ENV = 'production',
+  onError = defaultOnError,
+  useThemePlugin = true,
+  useGlobalContextPlugin = false,
+  globalContextOpts,
+}: ArgsI = {}) {
   if (stateContainer) return stateContainer as StateContainer;
 
   /**
