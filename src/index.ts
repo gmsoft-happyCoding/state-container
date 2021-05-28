@@ -25,13 +25,24 @@ interface ArgsI {
   history?: History;
   NODE_ENV?: string;
   onError?: (err: any) => void;
-  createGlobalContextOpts?: OptsI;
+  useThemePlugin?: boolean;
+  useGlobalContextPlugin?: boolean;
+  globalContextOpts?: OptsI;
 }
 
 function createStateContainer(
-  { history, NODE_ENV, onError, createGlobalContextOpts }: ArgsI = {
+  {
+    history,
+    NODE_ENV,
+    onError,
+    useThemePlugin,
+    useGlobalContextPlugin,
+    globalContextOpts,
+  }: ArgsI = {
     onError: defaultOnError,
     NODE_ENV: 'production',
+    useThemePlugin: true,
+    useGlobalContextPlugin: false,
   }
 ) {
   if (stateContainer) return stateContainer as StateContainer;
@@ -58,8 +69,8 @@ function createStateContainer(
   stateContainer = create({ onError }, createOpts);
 
   stateContainer.use(createLoading());
-  stateContainer.use(createThemePlugin());
-  stateContainer.use(createGlobalContextPlugin(createGlobalContextOpts));
+  if (useThemePlugin) stateContainer.use(createThemePlugin());
+  if (useGlobalContextPlugin) stateContainer.use(createGlobalContextPlugin(globalContextOpts));
 
   /**
    * dynamic inject dva model to stateContainer
