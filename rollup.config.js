@@ -1,27 +1,28 @@
-import nodeResolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
-import babel from "rollup-plugin-babel";
-import replace from "rollup-plugin-replace";
-import { terser } from "rollup-plugin-terser";
-import filesize from "rollup-plugin-filesize";
+import nodeResolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
+import replace from 'rollup-plugin-replace';
+import { terser } from 'rollup-plugin-terser';
+import filesize from 'rollup-plugin-filesize';
 
 const globals = {
-  redux: "Redux",
-  "dva-core": "DvaCore",
-  "react-router-redux": "ReactRouterRedux",
-  "connected-react-router": "ConnectedReactRouter",
-  history: "History",
-  "@gmsoft/event-bus": "EventBus",
+  axios: 'axios',
+  history: 'History',
+  redux: 'Redux',
+  'dva-core': 'DvaCore',
+  'react-router-redux': 'ReactRouterRedux',
+  'connected-react-router': 'ConnectedReactRouter',
+  '@gmsoft/event-bus': 'EventBus',
 };
 
 export default [
   // UMD Development
   {
-    input: "src/index.js",
+    input: 'src/index.ts',
     output: {
       file: `dist/state-container.js`,
-      format: "umd",
-      name: "StateContainer",
+      format: 'umd',
+      name: 'StateContainer',
       indent: false,
       sourcemap: true,
       globals,
@@ -33,12 +34,11 @@ export default [
         main: true,
       }),
       commonjs(),
-      babel({
-        runtimeHelpers: true,
-        exclude: "node_modules/**",
+      typescript({
+        tsconfig: './tsconfig.json',
       }),
       replace({
-        "process.env.NODE_ENV": JSON.stringify("development"),
+        'process.env.NODE_ENV': JSON.stringify('development'),
       }),
       filesize(),
     ],
@@ -46,11 +46,11 @@ export default [
 
   // UMD Production
   {
-    input: "src/index.js",
+    input: 'src/index.ts',
     output: {
       file: `dist/state-container.min.js`,
-      format: "umd",
-      name: "StateContainer",
+      format: 'umd',
+      name: 'StateContainer',
       indent: false,
       sourcemap: true,
       globals,
@@ -62,12 +62,11 @@ export default [
         main: true,
       }),
       commonjs(),
-      babel({
-        exclude: "node_modules/**",
-        runtimeHelpers: true,
+      typescript({
+        tsconfig: './tsconfig.json',
       }),
       replace({
-        "process.env.NODE_ENV": JSON.stringify("production"),
+        'process.env.NODE_ENV': JSON.stringify('production'),
       }),
       terser({
         compress: {
