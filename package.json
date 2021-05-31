@@ -4,7 +4,7 @@
   "main": "dist/state-container.js",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "@gmsoft/dva-global-context-plugin": "1.2.0",
+    "@gmsoft/dva-global-context-plugin": "1.3.0",
     "@gmsoft/dva-theme-plugin": "1.4.0",
     "dva": "^2.4.1",
     "dva-core": "^2.0.1",
