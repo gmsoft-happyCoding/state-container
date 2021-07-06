@@ -372,10 +372,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gmsoft/dva-global-context-plugin@1.3.0":
-  version "1.3.0"
-  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-global-context-plugin/-/dva-global-context-plugin-1.3.0.tgz#e63c6ff9c9755263f494437ce72d0e36a150a215"
-  integrity sha512-OhtvkVaCI4X3vRgAUnRyZGRVIzNttoTD8f+e5Z+rliGl9iISCc6InSkG+eKsdpTXBvVU9UxjhQ4cdEpxlbg3LQ==
+"@gmsoft/dva-global-context-plugin@1.4.0":
+  version "1.4.0"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-global-context-plugin/-/dva-global-context-plugin-1.4.0.tgz#3387a6c7fc663bea664f68c8d56b27cfd578cf74"
+  integrity sha512-t0LfCq+b+puglPFvhOS4d7Umw18cb1QiWdih1RMvzVkorMNt7Jdpc+Ue6e8cKaP7qSyVrUQlqnjYv3WQ1np8uQ==
 
 "@gmsoft/dva-theme-plugin@1.4.0":
   version "1.4.0"
