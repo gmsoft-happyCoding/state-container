@@ -13,6 +13,7 @@ const globals = {
   'react-router-redux': 'ReactRouterRedux',
   'connected-react-router': 'ConnectedReactRouter',
   '@gmsoft/event-bus': 'EventBus',
+  'react-redux': 'ReactRedux',
 };
 
 export default [
