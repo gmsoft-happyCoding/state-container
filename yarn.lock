@@ -372,10 +372,12 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gmsoft/dva-global-context-plugin@1.5.0":
-  version "1.5.0"
-  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-global-context-plugin/-/dva-global-context-plugin-1.5.0.tgz#293a4f26ff04200192f9e6e463c0a36bd55615ee"
-  integrity sha512-mR66GrFSRowCckAHYutHXiu1DFo+QxTfr21tBMv4cTHjlZISweJXvBiCoy1SVyYI4Gwu+vz1uj6cC/etTirBmg==
+"@gmsoft/dva-global-context-plugin@1.7.0":
+  version "1.7.0"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-global-context-plugin/-/dva-global-context-plugin-1.7.0.tgz#cd72f7f2c49fdda22e6021f978e7e7ec1bb9a0b3"
+  integrity sha512-nbfEuMqKWO/LpS4roGDwV9abk5pQI9HAXZFvQqCdZyZOWbEuWlECrQBz/oYWrPtMfcWltL0jmb4Nq+y2+cFtow==
+  dependencies:
+    react-redux "7.1.0"
 
 "@gmsoft/dva-theme-plugin@1.4.0":
   version "1.4.0"
@@ -5098,7 +5100,7 @@ react-dom@^17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
+react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6:
   version "16.13.1"
   resolved "http://192.168.2.10:8081/repository/npm.gm/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -5134,6 +5136,18 @@ react-redux@5.0.7:
     lodash-es "^4.17.5"
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
+
+react-redux@7.1.0:
+  version "7.1.0"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/react-redux/-/react-redux-7.1.0.tgz#72af7cf490a74acdc516ea9c1dd80e25af9ea0b2"
+  integrity sha512-hyu/PoFK3vZgdLTg9ozbt7WF3GgX5+Yn3pZm5/96/o4UueXA+zj08aiSC9Mfj2WtD1bvpIb3C5yvskzZySzzaw==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    hoist-non-react-statics "^3.3.0"
+    invariant "^2.2.4"
+    loose-envify "^1.4.0"
+    prop-types "^15.7.2"
+    react-is "^16.8.6"
 
 react-router-dom@^4.1.2:
   version "4.3.1"

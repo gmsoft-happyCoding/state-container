@@ -5,7 +5,11 @@ import type { History } from 'history';
 import createLoading from 'dva-loading';
 import { routerMiddleware, routerReducer as routing } from 'react-router-redux';
 import createThemePlugin from '@gmsoft/dva-theme-plugin';
-import createGlobalContextPlugin, { OptsI } from '@gmsoft/dva-global-context-plugin';
+import createGlobalContextPlugin, {
+  OptsI,
+  globalSelector,
+  useGlobal,
+} from '@gmsoft/dva-global-context-plugin';
 
 // model namespace cache
 const cached = {};
@@ -87,4 +91,4 @@ function createStateContainer({
   return stateContainer as StateContainer;
 }
 
-export { createStateContainer as create };
+export { createStateContainer as create, globalSelector, useGlobal };
