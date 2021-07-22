@@ -514,8 +514,8 @@
 
 "@gmsoft/auth-sdk@^1.0.0":
   version "1.0.0"
-  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/auth-sdk/-/auth-sdk-1.0.0.tgz#259e80f2fa5c4c5a35931864072d0d96781ede6c"
-  integrity sha512-kqN+YMrrfdPOaNJoebi6JCITHbnFBmQfSWh7z9MPsWr7qkwh5xbnuxBxlBPx+raSWUNDKG/MTqJZQXzN8eqdxw==
+  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/auth-sdk/-/auth-sdk-1.0.0.tgz#e7ddb3d4a1870b2f80ddc3057a9ef2ccd68f4077"
+  integrity sha512-VLUe/WwIczl9o5Hs+0DLvM/uUjL+dAuysPBZYzh2VXEudHX0qyX3+LysR6klP/YJIAk0jDl8NXQC+ewnfBxMAw==
   dependencies:
     "@gmsoft/ui" "^1.12.3"
     antd "3.26.20-custom.2"
@@ -530,15 +530,16 @@
 
 "@gmsoft/dva-global-context-plugin@1.7.0":
   version "1.7.0"
-  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-global-context-plugin/-/dva-global-context-plugin-1.7.0.tgz#cd72f7f2c49fdda22e6021f978e7e7ec1bb9a0b3"
-  integrity sha512-nbfEuMqKWO/LpS4roGDwV9abk5pQI9HAXZFvQqCdZyZOWbEuWlECrQBz/oYWrPtMfcWltL0jmb4Nq+y2+cFtow==
+  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-global-context-plugin/-/dva-global-context-plugin-1.7.0.tgz#aa0f4df9f24545e9059578ba48ef3656bcd65dec"
+  integrity sha512-9/hBunMJ4CXmapjbgvF30GyEJ4L7bkWmAIC3pBXpgR2ez+rOqb6n+IS/QxFC1ztL8yLvS9g5/boHUTZSU7gpdg==
   dependencies:
+    "@gmsoft/auth-sdk" "^1.0.0"
     react-redux "7.1.0"
 
-"@gmsoft/dva-global-context-plugin@1.8.0":
-  version "1.8.0"
-  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-global-context-plugin/-/dva-global-context-plugin-1.8.0.tgz#088576c3db560883c52a67a325e6745c7f8bee38"
-  integrity sha512-6Gwd6VUdHDyH7tkEQ0TgZmQkM/nZxdAd/389MxQkLbxZdxVNQfHB0+f/MAm/dZilhzBsYA5S2YmirY4JgizMHA==
+"@gmsoft/dva-global-context-plugin@1.9.0":
+  version "1.9.0"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-global-context-plugin/-/dva-global-context-plugin-1.9.0.tgz#43a44b7358779276bcebdedf278c08f55fc4dc9a"
+  integrity sha512-ZerZFkjXJmfkrFR9TdwPGzg1kxnhEK4Ls5/Ywvc/PrOsceIDb/W0qSBaRcQokmAQIMBO+kJax2aqiD/joqmMkA==
   dependencies:
     "@gmsoft/auth-sdk" "^1.0.0"
     react-redux "7.1.0"
