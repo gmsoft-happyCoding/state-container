@@ -44,7 +44,7 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "pub": "yarn build && npm publish",
+    "pub": "yarn build && yarn publish",
     "test": "yarn jest"
   }
 }
