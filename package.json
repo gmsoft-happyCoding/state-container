@@ -1,8 +1,25 @@
 {
   "name": "state-container",
   "version": "1.6.0",
-  "main": "dist/state-container.js",
-  "typings": "dist/index.d.ts",
+  "publishConfig": {
+    "registry": "http://192.168.2.10:8081/repository/npm.hosted/"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/state-container.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/state-container.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "dist": "rollup -c",
+    "pub": "yarn dist && yarn publish",
+    "test": "yarn jest"
+  },
   "dependencies": {
     "@gmsoft/dva-global-context-plugin": "1.10.0",
     "@gmsoft/dva-theme-plugin": "1.4.0",
@@ -38,13 +55,5 @@
     "ts-jest": "^27.0.1",
     "tslib": "2.2.0",
     "typescript": "<5.4.0"
-  },
-  "publishConfig": {
-    "registry": "http://192.168.2.10:8081/repository/npm.hosted/"
-  },
-  "scripts": {
-    "build": "rollup -c",
-    "pub": "yarn build && yarn publish",
-    "test": "yarn jest"
   }
 }
