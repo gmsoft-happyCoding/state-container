@@ -398,6 +398,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.10.1", "@babel/runtime@^7.18.3":
+  version "7.24.7"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/@babel/runtime/-/runtime-7.24.7.tgz#f4f0d5530e8dbdf59b3451b9b3e594b6ba082e12"
+  integrity sha512-UwgBRMjJP+xv857DCngvqXI3Iq6J4v0wXmwc6sapg+zyhbwmQX67LUEFrkK5tbyJ30jGuG3ZvWpBiB9LCy1kWw==
+  dependencies:
+    regenerator-runtime "^0.14.0"
+
 "@babel/runtime@^7.12.1":
   version "7.14.6"
   resolved "http://192.168.2.10:8081/repository/npm.gm/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
@@ -543,13 +550,13 @@
     state-container "1.5.0"
     styled-components "^5.3.0"
 
-"@gmsoft/auth-sdk@1.9.0":
-  version "1.9.0"
-  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/auth-sdk/-/auth-sdk-1.9.0.tgz#fd1980e7b0ad8cb106f1d9d5ad17471658d272a9"
-  integrity sha512-H101XrbUfrYyAIECs8IzNNvGgL/oFcuiltVi0nB6dSU5obkUojXLhKsBcq4uHsb//MUcBAeW5pWJeGMhVIivig==
+"@gmsoft/auth-sdk@1.9.1":
+  version "1.9.1"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/auth-sdk/-/auth-sdk-1.9.1.tgz#32b874c9caa4268f5fb2681bc1a033f0e194548e"
+  integrity sha512-Rgg+K3p9HuYL/I64bV96tjLWJu/QtOxB07Mq9td+GNGVpnmmoEbJ14RlfZp6d7YNOlkYbxlp/nP2L1jevefHhQ==
   dependencies:
     "@gmsoft/ui" "^1.12.3"
-    antd "3.26.20-custom.2"
+    antd "3.26.20-custom.4"
     axios "0.24.0"
     qs "^6.10.1"
     react "^17.0.0"
@@ -559,12 +566,12 @@
     state-container "1.5.0"
     styled-components "^5.3.0"
 
-"@gmsoft/dva-global-context-plugin@1.11.0":
-  version "1.11.0"
-  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-global-context-plugin/-/dva-global-context-plugin-1.11.0.tgz#28790f318fac5cbd24b70dd720d0234611abf069"
-  integrity sha512-deeyWWNhLcPe1ncTLBr1r3ttY4Aolgjxh2NTTC13D6JGuDzpeZ4IoXiiiXA4ELiTa20RcToJl/IB3x6jCUb+mA==
+"@gmsoft/dva-global-context-plugin@1.11.1":
+  version "1.11.1"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/@gmsoft/dva-global-context-plugin/-/dva-global-context-plugin-1.11.1.tgz#4366c97ee339a185952e118cfe14b51d8e49253b"
+  integrity sha512-hiCkG3lLOOVqdRMmU1ixy3LbKXXIssSRutp+HVpy6zzcjZcl5VKa4Bb/Mb8nSw436VNKYi2eXn2rjB69XpFnMw==
   dependencies:
-    "@gmsoft/auth-sdk" "1.9.0"
+    "@gmsoft/auth-sdk" "1.9.1"
     react-redux "7.1.0"
 
 "@gmsoft/dva-global-context-plugin@1.9.1":
@@ -1495,6 +1502,65 @@ antd@3.26.20-custom.2:
     shallowequal "^1.1.0"
     warning "~4.0.3"
 
+antd@3.26.20-custom.4:
+  version "3.26.20-custom.4"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/antd/-/antd-3.26.20-custom.4.tgz#27861b185b9ac1432c46d4acabcbd6567f70fdf2"
+  integrity sha512-Pic28wbS3E2ECgTkHiB/4SeV9ij/VD//U38VnzBP/hTMLq73DLjZng/A4qgA9PjMmmOSKhb5aZKfwoFxqUo24g==
+  dependencies:
+    "@ant-design/create-react-context" "^0.2.4"
+    "@ant-design/icons" "~2.1.1"
+    "@ant-design/icons-react" "~2.0.1"
+    "@types/react-slick" "^0.23.4"
+    array-tree-filter "^2.1.0"
+    babel-runtime "6.x"
+    classnames "~2.3.1"
+    copy-to-clipboard "^3.2.0"
+    css-animation "^1.5.0"
+    dom-closest "^0.2.0"
+    enquire.js "^2.1.6"
+    is-mobile "^2.1.0"
+    lodash "^4.17.13"
+    moment "^2.24.0"
+    omit.js "^1.0.2"
+    prop-types "^15.7.2"
+    raf "^3.4.1"
+    rc-animate "^2.10.2"
+    rc-calendar-gmsoft "9.15.10"
+    rc-cascader "~0.17.4"
+    rc-checkbox "~2.1.6"
+    rc-collapse "~1.11.3"
+    rc-dialog "~7.6.0"
+    rc-drawer "~3.1.1"
+    rc-dropdown "~2.4.1"
+    rc-form "^2.4.10"
+    rc-input-number "~4.5.0"
+    rc-mentions "~0.4.0"
+    rc-menu "~7.5.1"
+    rc-notification "~3.3.1"
+    rc-pagination "~1.20.11"
+    rc-progress "~3.2.4"
+    rc-rate "~2.5.0"
+    rc-resize-observer "^0.1.0"
+    rc-select "~9.2.0"
+    rc-slider "~8.7.1"
+    rc-steps "~3.5.0"
+    rc-switch "~1.9.0"
+    rc-table "~6.10.5"
+    rc-tabs "~9.7.0"
+    rc-time-picker "~3.7.1"
+    rc-tooltip "~3.7.3"
+    rc-tree "~2.1.0"
+    rc-tree-select "~2.9.1"
+    rc-trigger "2.6.5-custom.0"
+    rc-upload "~2.9.1"
+    rc-util "5.1.0"
+    react-lazy-load "^3.0.13"
+    react-lifecycles-compat "^3.0.4"
+    react-slick "~0.25.2"
+    resize-observer-polyfill "^1.5.1"
+    shallowequal "^1.1.0"
+    warning "~4.0.3"
+
 antd@^3:
   version "3.26.20"
   resolved "http://192.168.2.10:8081/repository/npm.gm/antd/-/antd-3.26.20.tgz#f3f570efaaa5950a144942f21eb2aaaa088e9407"
@@ -2109,6 +2175,11 @@ classnames@~2.2.6:
   version "2.2.6"
   resolved "http://192.168.2.10:8081/repository/npm.gm/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
+
+classnames@~2.3.1:
+  version "2.3.3"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/classnames/-/classnames-2.3.3.tgz#897b59920fa3e336571c164366efad73e9d6418b"
+  integrity sha512-1inzZmicIFcmUya7PGtUQeXtcF7zZpPnxtQoYOrz0uiOBGlLFa4ik4361seYL2JCcRDIyfdFHiwQolESFlw+Og==
 
 clean-stack@^2.0.0:
   version "2.2.0"
@@ -5576,6 +5647,19 @@ rc-animate@^3.0.0-rc.1:
     raf "^3.4.0"
     rc-util "^4.15.3"
 
+rc-calendar-gmsoft@9.15.10:
+  version "9.15.10"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/rc-calendar-gmsoft/-/rc-calendar-gmsoft-9.15.10.tgz#87ef640f68f3a05226e3897dff96bdfb9e74168b"
+  integrity sha512-mIH0HSXiI2gSBbUBgQ3udv7hRS/3O4ueAGQAKNKNbS4Eo49azSWIr3hFb+to1/Sr/V2emAk6PPzRb58Y8NuAmQ==
+  dependencies:
+    babel-runtime "6.x"
+    classnames "2.x"
+    moment "2.x"
+    prop-types "^15.5.8"
+    rc-trigger "^2.2.0"
+    rc-util "^4.1.1"
+    react-lifecycles-compat "^3.0.4"
+
 rc-calendar-gmsoft@~9.15.8:
   version "9.15.8"
   resolved "http://192.168.2.10:8081/repository/npm.gm/rc-calendar-gmsoft/-/rc-calendar-gmsoft-9.15.8.tgz#4cfaa3f9203f9400c303b41f5fb9a8aa000fbfe4"
@@ -5785,6 +5869,15 @@ rc-progress@~2.5.0:
     babel-runtime "6.x"
     prop-types "^15.5.8"
 
+rc-progress@~3.2.4:
+  version "3.2.4"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/rc-progress/-/rc-progress-3.2.4.tgz#4036acdae2566438545bc4df2203248babaf7549"
+  integrity sha512-M9WWutRaoVkPUPIrTpRIDpX0SPSrVHzxHdCRCbeoBFrd9UFWTYNWRlHsruJM5FH1AZI+BwB4wOJUNNylg/uFSw==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "^2.2.6"
+    rc-util "^5.16.1"
+
 rc-rate@~2.5.0:
   version "2.5.1"
   resolved "http://192.168.2.10:8081/repository/npm.gm/rc-rate/-/rc-rate-2.5.1.tgz#55fc5fd23ea9dcc72250b9a889803479f4842961"
@@ -5986,6 +6079,14 @@ rc-upload@~2.9.1:
     prop-types "^15.5.7"
     warning "4.x"
 
+rc-util@5.1.0:
+  version "5.1.0"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/rc-util/-/rc-util-5.1.0.tgz#a525440d5138e6b2b68dfb61ca16dc4213bdb815"
+  integrity sha512-uxkO3WRjHKcwrqpkVs1sk0DOq0X3BQ/J+Kjgql05Zhrs5wqxWVn5bvTmdKHJ/zUjHLaHm/NfPe07YfD9/NK6vQ==
+  dependencies:
+    react-is "^16.12.0"
+    shallowequal "^1.1.0"
+
 rc-util@^4.0.4, rc-util@^4.1.1, rc-util@^4.13.0, rc-util@^4.15.3, rc-util@^4.15.7, rc-util@^4.16.1, rc-util@^4.3.0, rc-util@^4.4.0, rc-util@^4.5.0, rc-util@^4.5.1, rc-util@^4.6.0:
   version "4.21.1"
   resolved "http://192.168.2.10:8081/repository/npm.gm/rc-util/-/rc-util-4.21.1.tgz#88602d0c3185020aa1053d9a1e70eac161becb05"
@@ -5996,6 +6097,14 @@ rc-util@^4.0.4, rc-util@^4.1.1, rc-util@^4.13.0, rc-util@^4.15.3, rc-util@^4.15.
     react-is "^16.12.0"
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.1.0"
+
+rc-util@^5.16.1:
+  version "5.43.0"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/rc-util/-/rc-util-5.43.0.tgz#bba91fbef2c3e30ea2c236893746f3e9b05ecc4c"
+  integrity sha512-AzC7KKOXFqAdIBqdGWepL9Xn7cm3vnAmjlHqUnoQaTMZYhM4VlXGLkkHHxj/BZ7Td0+SOPKB4RGPboBVKT9htw==
+  dependencies:
+    "@babel/runtime" "^7.18.3"
+    react-is "^18.2.0"
 
 react-dom@17.0.1:
   version "17.0.1"
@@ -6030,7 +6139,7 @@ react-is@^17.0.1:
   resolved "http://192.168.2.10:8081/repository/npm.gm/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-is@^18.0.0:
+react-is@^18.0.0, react-is@^18.2.0:
   version "18.3.1"
   resolved "http://192.168.2.10:8081/repository/npm.gm/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
@@ -6237,6 +6346,11 @@ regenerator-runtime@^0.13.4:
   version "0.13.7"
   resolved "http://192.168.2.10:8081/repository/npm.gm/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
   integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
+
+regenerator-runtime@^0.14.0:
+  version "0.14.1"
+  resolved "http://192.168.2.10:8081/repository/npm.gm/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz#356ade10263f685dda125100cd862c1db895327f"
+  integrity sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==
 
 regexp.prototype.flags@^1.5.0, regexp.prototype.flags@^1.5.2:
   version "1.5.2"

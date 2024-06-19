@@ -1,6 +1,6 @@
 {
   "name": "state-container",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "publishConfig": {
     "registry": "http://192.168.2.10:8081/repository/npm.hosted/"
   },
@@ -21,7 +21,7 @@
     "test": "yarn jest"
   },
   "dependencies": {
-    "@gmsoft/dva-global-context-plugin": "1.11.0",
+    "@gmsoft/dva-global-context-plugin": "1.11.1",
     "@gmsoft/dva-theme-plugin": "1.4.0",
     "dva": "^2.4.1",
     "dva-core": "^2.0.1",
